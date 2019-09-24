@@ -1,0 +1,21 @@
+galaxy_info:
+  role_name: php
+  author: youyo
+  company: heptagon inc.
+  description: install php
+  license: MIT
+  min_ansible_version: 2.8
+  platforms:
+    - name: Amazon
+      versions:
+        - Candidate
+    - name: EL
+      versions:
+        - 7
+
+  galaxy_tags:
+    - system
+    - php
+
+dependencies:
+  - cloud3rsio.phpbuild

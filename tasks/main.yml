@@ -1,0 +1,39 @@
+---
+- name: Check php
+  stat:
+    path: "{{ php_dir }}/{{ php_version }}"
+  register: specific_version_php
+
+- name: Write build default configuration
+  lineinfile:
+    path: "{{ php_phpbuild_root }}/share/php-build/default_configure_options"
+    line: '--with-freetype-dir'
+
+- name: Write build configuration for php7.x
+  lineinfile:
+    path: "{{ php_phpbuild_root }}/share/php-build/definitions/{{ php_version }}"
+    line: 'configure_option "--with-libzip"'
+
+- name: Build php "{{ php_version }}"
+  command: "{{ php_phpbuild_root }}/bin/php-build {{ php_version }} {{ php_dir }}/{{ php_version }}"
+  environment:
+    PHP_BUILD_EXTRA_MAKE_ARGUMENTS: "{{ php_PHP_BUILD_EXTRA_MAKE_ARGUMENTS }}"
+  when: not specific_version_php.stat.exists
+
+- name: Set date.timezone
+  lineinfile:
+    path: "{{ php_dir }}/{{ php_version }}/etc/php.ini"
+    regexp: '.*ate.timezone.*'
+    line: "date.timezone={{ php_date_timezone }}"
+
+- name: Set pdo_mysql.default_socket
+  lineinfile:
+    path: "{{ php_dir }}/{{ php_version }}/etc/php.ini"
+    regexp: '.*do_mysql.default_socket.*'
+    line: "pdo_mysql.default_socket={{ php_pdo_mysql_default_socket }}"
+
+- name: Set mysqli.default_socket
+  lineinfile:
+    path: "{{ php_dir }}/{{ php_version }}/etc/php.ini"
+    regexp: '.*ysqli.default_socket.*'
+    line: "mysqli.default_socket={{ php_mysqli_default_socket }}"
