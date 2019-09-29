@@ -18,7 +18,7 @@ php_fpm_pool:
   group: root
   listen: /var/run/php-fpm-{{ php_version }}.sock
   listen_owner: root
-  listen_group: root
+  listen_group: apache
   listen_mode: "0660"
   pm: ondemand
   pm_max_children: 5
