@@ -16,7 +16,7 @@ php_fpm_pool:
   pool: default
   user: root
   group: root
-  listen: /var/run/{{ php_version }}.sock
+  listen: /var/run/php-fpm-{{ php_version }}.sock
   listen_owner: root
   listen_group: root
   listen_mode: "0660"

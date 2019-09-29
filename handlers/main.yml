@@ -2,9 +2,5 @@
 - name: restart_phpfpm
   systemd:
     name: "phpfpm-{{ php_version }}.service"
-    state: restarted
-
-- name: daemon_reload
-  systemd:
-    name: "phpfpm-{{ php_version }}.service"
     daemon_reload: yes
+    state: restarted

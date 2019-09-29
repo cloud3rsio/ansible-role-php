@@ -68,7 +68,7 @@
     owner: root
     group: root
     mode: 0644
-  notify: daemon_reload
+  notify: restart_phpfpm
 
 - name: Start service
   systemd:

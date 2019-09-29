@@ -24,9 +24,8 @@ Role Variables
 | `php_dir` | `/usr/local/php` | String |
 | `php_phpbuild_root` | `/usr/local/php-build` | String |
 | `php_PHP_BUILD_EXTRA_MAKE_ARGUMENTS` | `-j2` | String |
-| `php_date_timezone` | `Asia/Tokyo` | String |
-| `php_pdo_mysql_default_socket` | `/var/lib/mysql/mysql.sock` | String |
-| `php_mysqli_default_socket` | `/var/lib/mysql/mysql.sock` | String |
+| `php_configurations` | Reference to [defaults/main.yml](defaults/main.yml) | Array |
+| `php_fpm_pool` | Reference to [defaults/main.yml](defaults/main.yml) | Hash |
 
 Dependencies
 ------------
