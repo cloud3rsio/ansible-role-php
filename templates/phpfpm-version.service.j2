@@ -1,6 +1,6 @@
 [Unit]
 Description=The PHP FastCGI Process Manager {{ php_version }}
-After=syslog.target,network.target
+After=syslog.target network.target
 
 [Service]
 ExecStart={{ php_dir }}/{{ php_version }}/sbin/php-fpm --nodaemonize --allow-to-run-as-root --fpm-config {{ php_dir }}/{{ php_version }}/etc/php-fpm.conf
