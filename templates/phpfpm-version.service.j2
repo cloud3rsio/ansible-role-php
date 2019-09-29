@@ -1,0 +1,14 @@
+[Unit]
+Description=The PHP FastCGI Process Manager {{ php_version }}
+After=syslog.target,network.target
+
+[Service]
+ExecStart={{ php_dir }}/{{ php_version }}/sbin/php-fpm --nodaemonize --allow-to-run-as-root --fpm-config {{ php_dir }}/{{ php_version }}/etc/php-fpm.conf
+EnvironmentFile=-/etc/default/phpfpm-{{ php_version }}
+Type=simple
+PIDFile=/var/run/phpfpm-{{ php_version }}.pid
+Restart=always
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

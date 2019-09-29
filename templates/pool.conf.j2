@@ -1,0 +1,12 @@
+[{{ php_fpm_pool.pool }}]
+user = {{ php_fpm_pool.user }}
+group = {{ php_fpm_pool.group }}
+listen = {{ php_fpm_pool.listen }}
+listen.owner = {{ php_fpm_pool.listen_owner }}
+listen.group = {{ php_fpm_pool.listen_group }}
+listen.mode = {{ php_fpm_pool.listen_mode }}
+pm = {{ php_fpm_pool.pm }}
+pm.max_children = {{ php_fpm_pool.pm_max_children }}
+pm.process_idle_timeout = {{ php_fpm_pool.pm_process_idle_timeout }}
+pm.max_requests = {{ php_fpm_pool.pm_max_requests }}
+catch_workers_output = {{ php_fpm_pool.catch_workers_output }}

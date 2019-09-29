@@ -12,3 +12,16 @@ php_configurations:
     line: 'mysqli.default_socket=/var/lib/mysql/mysql.sock'
   - regexp: '.*ession.save_path.*'
     line: 'session.save_path=/tmp'
+php_fpm_pool:
+  pool: default
+  user: root
+  group: root
+  listen: /var/run/{{ php_version }}.sock
+  listen_owner: root
+  listen_group: root
+  listen_mode: "0660"
+  pm: ondemand
+  pm_max_children: 5
+  pm_process_idle_timeout: 30s
+  pm_max_requests: 1000
+  catch_workers_output: 'yes'
