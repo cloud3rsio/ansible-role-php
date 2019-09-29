@@ -20,20 +20,9 @@
     PHP_BUILD_EXTRA_MAKE_ARGUMENTS: "{{ php_PHP_BUILD_EXTRA_MAKE_ARGUMENTS }}"
   when: not specific_version_php.stat.exists
 
-- name: Set date.timezone
+- name: Set configurations
   lineinfile:
     path: "{{ php_dir }}/{{ php_version }}/etc/php.ini"
-    regexp: '.*ate.timezone.*'
-    line: "date.timezone={{ php_date_timezone }}"
-
-- name: Set pdo_mysql.default_socket
-  lineinfile:
-    path: "{{ php_dir }}/{{ php_version }}/etc/php.ini"
-    regexp: '.*do_mysql.default_socket.*'
-    line: "pdo_mysql.default_socket={{ php_pdo_mysql_default_socket }}"
-
-- name: Set mysqli.default_socket
-  lineinfile:
-    path: "{{ php_dir }}/{{ php_version }}/etc/php.ini"
-    regexp: '.*ysqli.default_socket.*'
-    line: "mysqli.default_socket={{ php_mysqli_default_socket }}"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  with_items: "{{ php_configurations }}"

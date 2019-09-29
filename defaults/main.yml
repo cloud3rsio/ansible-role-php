@@ -3,6 +3,12 @@ php_version: 7.3.9
 php_dir: /usr/local/php
 php_phpbuild_root: /usr/local/php-build
 php_PHP_BUILD_EXTRA_MAKE_ARGUMENTS: '-j2'
-php_date_timezone: Asia/Tokyo
-php_pdo_mysql_default_socket: /var/lib/mysql/mysql.sock
-php_mysqli_default_socket: /var/lib/mysql/mysql.sock
+php_configurations:
+  - regexp: '.*ate.timezone.*'
+    line: 'date.timezone=Asia/Tokyo'
+  - regexp: '.*do_mysql.default_socket.*'
+    line: 'pdo_mysql.default_socket=/var/lib/mysql/mysql.sock'
+  - regexp: '.*ysqli.default_socket.*'
+    line: 'mysqli.default_socket=/var/lib/mysql/mysql.sock'
+  - regexp: '.*ession.save_path.*'
+    line: 'session.save_path=/tmp'
