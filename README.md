@@ -20,7 +20,7 @@ Role Variables
 
 | Key | Default Value | Type |
 | ------------- | ------------- | ------------- |
-| `php_version` | `7.3.9` | Int |
+| `php_version` | `7.4.9` | Int |
 | `php_dir` | `/usr/local/php` | String |
 | `php_phpbuild_root` | `/usr/local/php-build` | String |
 | `php_PHP_BUILD_EXTRA_MAKE_ARGUMENTS` | `-j2` | String |
@@ -39,7 +39,7 @@ Example Playbook
 - hosts: all
   roles:
     - role: cloud3rsio.php
-      php_version: 7.3.9
+      php_version: 7.4.9
 ```
 
 License

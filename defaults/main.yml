@@ -1,5 +1,5 @@
 ---
-php_version: 7.3.9
+php_version: 7.4.9
 php_dir: /usr/local/php
 php_phpbuild_root: /usr/local/php-build
 php_PHP_BUILD_EXTRA_MAKE_ARGUMENTS: '-j2'
