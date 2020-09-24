@@ -4,15 +4,23 @@
     path: "{{ php_dir }}/{{ php_version }}"
   register: specific_version_php
 
-- name: Write build default configuration
+- name: Write build freetype configuration for <=php7.3
   lineinfile:
-    path: "{{ php_phpbuild_root }}/share/php-build/default_configure_options"
-    line: '--with-freetype-dir'
+    path: "{{ php_phpbuild_root }}/share/php-build/definitions/{{ php_version }}"
+    line: 'configure_option "--with-freetype-dir"'
+  when: php_version is version('7.4.0', 'lt')
+
+- name: Write build freetype configuration for >php7.4
+  lineinfile:
+    path: "{{ php_phpbuild_root }}/share/php-build/definitions/{{ php_version }}"
+    line: 'configure_option "--with-freetype"'
+  when: php_version is version('7.4.0', 'ge')
 
 - name: Write build configuration for php7.x
   lineinfile:
     path: "{{ php_phpbuild_root }}/share/php-build/definitions/{{ php_version }}"
     line: 'configure_option "--with-libzip"'
+  when: php_version is version('7.0.0', 'ge')
 
 - name: Build php "{{ php_version }}"
   command: "{{ php_phpbuild_root }}/bin/php-build {{ php_version }} {{ php_dir }}/{{ php_version }}"
