@@ -8,18 +8,21 @@
   lineinfile:
     path: "{{ php_phpbuild_root }}/share/php-build/definitions/{{ php_version }}"
     line: 'configure_option "--with-freetype-dir"'
+    insertbefore: BOF
   when: php_version is version('7.4.0', 'lt')
 
 - name: Write build freetype configuration for >php7.4
   lineinfile:
     path: "{{ php_phpbuild_root }}/share/php-build/definitions/{{ php_version }}"
     line: 'configure_option "--with-freetype"'
+    insertbefore: BOF
   when: php_version is version('7.4.0', 'ge')
 
 - name: Write build configuration for php7.x
   lineinfile:
     path: "{{ php_phpbuild_root }}/share/php-build/definitions/{{ php_version }}"
     line: 'configure_option "--with-libzip"'
+    insertbefore: BOF
   when: php_version is version('7.0.0', 'ge')
 
 - name: Build php "{{ php_version }}"
