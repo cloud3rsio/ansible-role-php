@@ -12,6 +12,14 @@ php_configurations:
     line: 'mysqli.default_socket=/var/lib/mysql/mysql.sock'
   - regexp: '.*ession.save_path.*'
     line: 'session.save_path=/tmp'
+  - regexp: '.*pload_max_filesize.*'
+    line: 'upload_max_filesize=64M'
+  - regexp: '.*ost_max_size.*'
+    line: 'post_max_size=64M'
+  - regexp: '.*emory_limit.*'
+    line: 'memory_limit=128M'
+  - regexp: '.*ax_execution_time.*'
+    line: 'max_execution_time=60'
 php_fpm_pool:
   pool: default
   user: root
